@@ -43,6 +43,18 @@ class _KeyManager:
         self._keys: list[str] = []
         self._current_idx = 0
 
+        # Auto-load .env jika belum ada env var (untuk portable setup)
+        if not os.environ.get("GEMINI_API_KEYS") and not os.environ.get("GEMINI_API_KEY"):
+            env_path = Path(__file__).parent / ".env"
+            if env_path.exists():
+                for line in open(env_path):
+                    line = line.strip()
+                    if line and not line.startswith("#") and "=" in line:
+                        k, v = line.split("=", 1)
+                        k, v = k.strip(), v.strip().strip("\"'")
+                        if k in ("GEMINI_API_KEYS", "GEMINI_API_KEY"):
+                            os.environ[k] = v
+
         # Kumpulkan semua key
         if primary_key:
             self._keys.append(primary_key)
