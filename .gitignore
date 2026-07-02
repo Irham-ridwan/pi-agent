@@ -45,3 +45,4 @@ docs/*.md
 
 # Temp reports
 *.md~
+.pi_aliases.sh
