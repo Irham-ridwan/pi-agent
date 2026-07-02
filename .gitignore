@@ -9,8 +9,9 @@ build/
 .env
 .env.local
 *.env
+!env.example
 
-# API keys, tokens, secrets
+# API keys, secrets
 **/config/*.json
 !config/mcporter.json
 
@@ -24,8 +25,9 @@ node_modules/
 .DS_Store
 Thumbs.db
 
-# State database
-.pi/state/*.db
+# State data (local per machine)
+data/
+.pi/state/
 
 # NotebookLM
 .notebooklm/
@@ -33,13 +35,13 @@ Thumbs.db
 # Agent Reach
 .agent-reach/
 
-# Skills (installed via npx skills add — reinstall fresh on clone)
+# Skills (reinstall via npx skills add)
 .agents/
 skills-lock.json
 
-# Research outputs
+# Docs (clone separately if needed)
+docs/*.md
+!docs/.gitkeep
+
+# Temp reports
 *.md~
-notebooklm-*-report.md
-slm-research-report-*.md
-
-

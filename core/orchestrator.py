@@ -34,7 +34,7 @@ from typing import Optional, Literal
 from enum import Enum
 
 # NotebookLM Research Integration
-from research import Research as _Research
+from core.research import Research as _Research
 
 
 # ── Constants ──────────────────────────────────────────────────────────────────
@@ -421,11 +421,11 @@ class Pi:
             pi.gemini.sandbox("Clone repo, install deps, jalankan test")
         """
         try:
-            from antigravity import Gemini
+            from core.antigravity import Gemini
         except ImportError:
             raise ImportError(
                 "File antigravity.py tidak ditemukan. "
-                "Pastikan antigravity.py ada di direktori yang sama."
+                "Pastikan antigravity.py ada di core/."
             )
         return Gemini()
 
@@ -435,10 +435,10 @@ class Pi:
         """Lazy-load SessionStore dengan caching (mencegah SQLite connection leak)."""
         if self._state is None:
             try:
-                from state import SessionStore
+                from core.state import SessionStore
             except ImportError:
                 raise ImportError(
-                    "File state.py tidak ditemukan. Pastikan state.py ada di direktori yang sama."
+                    "File state.py tidak ditemukan. Pastikan state.py ada di core/."
                 )
             self._state = SessionStore()
         return self._state
