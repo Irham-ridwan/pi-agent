@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# Environment
+.env
+.env.local
+*.env
+
+# API keys, tokens, secrets
+**/config/*.json
+!config/mcporter.json
+
+# Node
+node_modules/
+.npm/
+
+# System
+.hf_token
+*.log
+.DS_Store
+Thumbs.db
+
+# State database
+.pi/state/*.db
+
+# NotebookLM
+.notebooklm/
+
+# Agent Reach
+.agent-reach/
+
+# Skills (installed via npx skills add — reinstall fresh on clone)
+.agents/
+skills-lock.json
+
+# Research outputs
+*.md~
+notebooklm-*-report.md
+slm-research-report-*.md
+
+# README (generated)
+README.md
